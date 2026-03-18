@@ -19,13 +19,11 @@ if (isset($_GET['delete'])) {
 
 if (isset($_POST['add_category'])) {
     $categoryName = trim($_POST['category_name']);
-    
     if (empty($categoryName)) {
         $error = "Category name cannot be empty.";
     } else {
         $categoryName = mysqli_real_escape_string($conn, $categoryName);
         $addQuery = "INSERT INTO categories (name) VALUES ('$categoryName')";
-        
         if (mysqli_query($conn, $addQuery)) {
             $success = "Category added successfully!";
         } else {
@@ -62,8 +60,6 @@ $result = mysqli_query($conn, $query);
                 Add Category
             </button>
                     </div>
-
-            
         </div>
     </form>
 </div>
