@@ -1,9 +1,9 @@
 <?php
 $host = "localhost";
-$username = "root"; // Default XAMPP username
-$password = ""; // Default empty password for XAMPP
+$username = "root"; 
+$password = ""; 
 
-// Create database using mysqli
+
 $conn = mysqli_connect($host, $username, $password);
 $sql = "create database vehicle_dealer;";
 $result = mysqli_query($conn, $sql);
