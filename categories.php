@@ -5,7 +5,7 @@ include 'layout.php';
 $error = "";
 $success = "";
 
-// Handle delete category
+
 if (isset($_GET['delete'])) {
     $catName = mysqli_real_escape_string($conn, $_GET['delete']);
     $deleteQuery = "DELETE FROM categories WHERE name='$catName'";
@@ -17,7 +17,6 @@ if (isset($_GET['delete'])) {
     }
 }
 
-// Handle add category
 if (isset($_POST['add_category'])) {
     $categoryName = trim($_POST['category_name']);
     
@@ -35,7 +34,7 @@ if (isset($_POST['add_category'])) {
     }
 }
 
-// Fetch all categories
+
 $query = "SELECT * FROM categories ORDER BY name";
 $result = mysqli_query($conn, $query);
 ?>
@@ -50,7 +49,7 @@ $result = mysqli_query($conn, $query);
     <p style="color: green; font-weight: bold;"><?php echo $success; ?></p>
 <?php endif; ?>
 
-<!-- Add Category Form -->
+
 <div style="margin-bottom: 30px; padding: 15px; background-color: #f5f5f5; border-radius: 5px;">
     <h3>Add New Category</h3>
     <form method="POST" action="categories.php">
@@ -69,7 +68,7 @@ $result = mysqli_query($conn, $query);
     </form>
 </div>
 
-<!-- List of Categories -->
+
 <div>
     <h3>Existing Categories</h3>
     
