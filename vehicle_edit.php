@@ -9,20 +9,20 @@ $price = "";
 $category = "";
 $error = "";
 
-// Check for error message from redirect
+
 if (isset($_GET['error'])) {
     $error = $_GET['error'];
 }
 
-// STEP 2: Fetch existing data to display inside the edit form
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     
-    // Fetch individual data using passed id
+    
     $query = "SELECT * FROM vehicles WHERE id='$id'";
     $result = mysqli_query($conn, $query);
 
-    // If matching vehicle found, pre-fill variables
+   
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         $model = $row['model'];
@@ -35,7 +35,7 @@ if (isset($_GET['id'])) {
         exit;
     }
 } else {
-    // Prevent direct access to page without id parameter
+    
     header("Location: main.php");
     exit;
 }
@@ -45,15 +45,15 @@ if (isset($_GET['id'])) {
 
 <?php if (!empty($error)) echo "<p class='error'>" . htmlspecialchars($error) . "</p>"; ?>
 
-<!-- Form submits to itself using POST -->
+
 <form action="edit_validation.php" method="POST">
-    <!-- Hidden input to pass ID during update operation -->
+    
     <input type="hidden" name="id" value="<?php echo $id; ?>">
 
    <label>Category:</label>
     <select name="category" required>
         <?php
-        // Fetch categories from database
+        
         $catQuery = "SELECT name FROM categories ORDER BY name";
         $catResult = mysqli_query($conn, $catQuery);
         while ($row = mysqli_fetch_assoc($catResult)) {
